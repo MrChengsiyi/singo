@@ -9,17 +9,32 @@ type Video struct {
 	CreatedAt int64  `json:"created_at"`
 }
 
-func BuildVideo(video model.Video) Video {
+func BuildVideo(item model.Video) Video {
 	return Video{
-		ID:        video.ID,
-		Title:     video.Title,
-		Info:      video.Info,
-		CreatedAt: video.CreatedAt.Unix(),
+		ID:        item.ID,
+		Title:     item.Title,
+		Info:      item.Info,
+		CreatedAt: item.CreatedAt.Unix(),
 	}
 }
 
-func BuildVideoResponse(video model.Video) Response {
+func BuildVideoResponse(item model.Video) Response {
 	return Response{
-		Data: BuildVideo(video),
+		Data: BuildVideo(item),
+	}
+}
+
+func BuildVideos(items []model.Video) (videos []Video) {
+	for _, item := range items {
+		video := BuildVideo(item)
+		videos = append(videos, video)
+	}
+	return videos
+
+}
+
+func BuildListResponse(items []model.Video) Response {
+	return Response{
+		Data: BuildVideos(items),
 	}
 }
