@@ -7,15 +7,17 @@ import (
 )
 
 type CreateVideoService struct {
-	Title string `form:"title" json:"title" binding:"required,min=5,max=30"`
-	Info  string `form:"info" json:"info" binding:"required,min=5,max=300"`
+	Title  string `form:"title" json:"title" binding:"required,min=5,max=30"`
+	Info   string `form:"info" json:"info" binding:"required,min=5,max=300"`
+	Avatar string `form:"avatar" json:"avatar"`
 }
 
 func (service *CreateVideoService) Create() serializer.Response {
 	video := model.Video{
-		Model: gorm.Model{},
-		Title: service.Title,
-		Info:  service.Info,
+		Model:  gorm.Model{},
+		Title:  service.Title,
+		Info:   service.Info,
+		Avatar: service.Avatar,
 	}
 
 	if err := model.DB.Create(&video).Error; err != nil {
