@@ -8,6 +8,7 @@ import (
 
 type CreateVideoService struct {
 	Title  string `form:"title" json:"title" binding:"required,min=5,max=30"`
+	Url    string `form:"url" json:"url"`
 	Info   string `form:"info" json:"info" binding:"required,min=5,max=300"`
 	Avatar string `form:"avatar" json:"avatar"`
 }
@@ -17,6 +18,7 @@ func (service *CreateVideoService) Create() serializer.Response {
 		Model:  gorm.Model{},
 		Title:  service.Title,
 		Info:   service.Info,
+		Url:	service.Url,
 		Avatar: service.Avatar,
 	}
 
