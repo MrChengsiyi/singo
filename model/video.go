@@ -9,6 +9,7 @@ import (
 type Video struct {
 	gorm.Model
 	Title  string
+	Url    string
 	Info   string
 	Avatar string
 	Url    string
