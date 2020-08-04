@@ -20,7 +20,8 @@ func CreateVideo(c *gin.Context) {
 //ShowVideo 视频详情接口
 func ShowVideo(c *gin.Context) {
 	var service service.ShowVideoService
-	res := service.Show(c.Param("ID"))
+
+	res := service.Show(c.Param("id"))
 	c.JSON(200, res)
 }
 

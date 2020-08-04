@@ -1,21 +1,22 @@
 package service
 
 import (
-	"github.com/jinzhu/gorm"
 	"singo/model"
 	"singo/serializer"
 )
 
 type CreateVideoService struct {
-	Title  string `form:"title" json:"title" binding:"required,min=5,max=30"`
-	Info   string `form:"info" json:"info" binding:"required,min=5,max=300"`
+	Title  string `form:"title" json:"title" `
+	Url	   string `form:"url" json:"url"`
+	Info   string `form:"info" json:"info"`
 	Avatar string `form:"avatar" json:"avatar"`
 }
 
+
 func (service *CreateVideoService) Create() serializer.Response {
 	video := model.Video{
-		Model:  gorm.Model{},
 		Title:  service.Title,
+		Url:	service.Url,
 		Info:   service.Info,
 		Avatar: service.Avatar,
 	}

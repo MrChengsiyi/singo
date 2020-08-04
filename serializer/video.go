@@ -8,14 +8,16 @@ type Video struct {
 	Info      string `json:"info"`
 	Avatar    string `json:"avatar"`
 	CreatedAt int64  `json:"created_at"`
+	Url       string  `json:"url"`
 }
 
 func BuildVideo(item model.Video) Video {
 	return Video{
 		ID:        item.ID,
+		Url:	   item.Url,
 		Title:     item.Title,
 		Info:      item.Info,
-		Avatar:    item.Avatar,
+		Avatar:    item.AvatarURL(),
 		CreatedAt: item.CreatedAt.Unix(),
 	}
 }
