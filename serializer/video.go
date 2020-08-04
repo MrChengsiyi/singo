@@ -17,12 +17,7 @@ func BuildVideo(item model.Video) Video {
 		Url:	   item.Url,
 		Title:     item.Title,
 		Info:      item.Info,
-<<<<<<< HEAD
 		Avatar:    item.AvatarURL(),
-=======
-		Url:	   item.Url,
-		Avatar:    item.Avatar,
->>>>>>> 53b78b32ea4c2d4541610b65adf3ef2171ac7dc2
 		CreatedAt: item.CreatedAt.Unix(),
 	}
 }

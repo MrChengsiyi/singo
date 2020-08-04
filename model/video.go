@@ -12,7 +12,6 @@ type Video struct {
 	Url    string
 	Info   string
 	Avatar string
-	Url    string
 }
 
 // AvatarURL 封面地址
