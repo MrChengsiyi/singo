@@ -13,7 +13,7 @@ ENV MysqlDSN=""
 ENV GIN_MODE="release"
 ENV PORT=3000
 
-
+#第一行是为了换源 第二行是更新 第三行是安装一个包 这个包可以使用https 第四行是为了解决一个bug 第五行是创建一个conf文件夹
 RUN echo -e "https://mirrors.aliyun.com/alpine/v3.7/main" > /etc/apk/repositories &&\
     apk update && \
     apk add ca-certificates && \
@@ -23,8 +23,11 @@ RUN echo -e "https://mirrors.aliyun.com/alpine/v3.7/main" > /etc/apk/repositorie
 WORKDIR /www
 
 COPY --from=build /usr/local/go/src/giligili/api_server /usr/bin/api_server
+
+#将配置文件转入
 ADD ./conf /www/conf
 
 RUN chmod +x /usr/bin/api_server
 
 ENTRYPOINT ["api_server"]
+#usr/bin/路径下的算是path路径 可以省略
