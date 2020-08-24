@@ -9,7 +9,7 @@ type ListVideoService struct {
 }
 
 func (service *ListVideoService) List() serializer.Response {
-	var videos []model.Video
+	var videos []model.Video  
 	if err := model.DB.Find(&videos).Error; err != nil {
 		return serializer.Response{
 			Code:  404,
@@ -18,5 +18,5 @@ func (service *ListVideoService) List() serializer.Response {
 		}
 	}
 
-	return serializer.BuildListResponse(videos)
+	return serializer.BuildVideosResponse(videos)
 }

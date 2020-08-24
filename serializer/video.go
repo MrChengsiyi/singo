@@ -37,7 +37,7 @@ func BuildVideos(items []model.Video) (videos []Video) {
 
 }
 
-func BuildListResponse(items []model.Video) Response {
+func BuildVideosResponse(items []model.Video) Response {
 	return Response{
 		Data: BuildVideos(items),
 	}
